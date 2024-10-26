@@ -104,7 +104,6 @@
 
 
 
-
 name: Build and Push to Docker Hub
 
 on:
@@ -121,11 +120,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Java (for building the Spring app)
+      # Step 2: Set up Java 21 (for building the Spring app)
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '21'  # Change this to the version your Spring app needs
+          distribution: 'temurin'  # Choose a distribution (e.g., temurin, zulu)
+          java-version: '21'       # Set to Java 21
 
       # Step 3: Build the Spring application
       - name: Build with Maven
@@ -149,20 +149,3 @@ jobs:
         run: |
           IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/my-spring-app:latest
           docker push $IMAGE_NAME
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
