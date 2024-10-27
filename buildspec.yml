@@ -15,9 +15,9 @@ phases:
   post_build:
     commands:
       - echo "Packaging application for deployment..."
-      - mv target/*.jar MyApp.jar
+      - mv target/*.jar springapp.jar
       - echo "Running the application..."
-      - java -jar MyApp.jar
+      - java -jar springapp.jar
 artifacts:
   files:
-    - MyApp.jar
+    - springapp.jar
