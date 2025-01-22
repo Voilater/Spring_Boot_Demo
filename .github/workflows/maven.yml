@@ -14,12 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Set up Java 21
+      # Step 2: Set up Java 21 using Temurin
       - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           java-version: '21'  # Specify Java version 21
-          distribution: 'adoptopenjdk'
+          distribution: 'temurin'  # Use the Temurin distribution
 
       # Step 3: Build the Spring Boot application using Maven
       - name: Build Spring Boot Application with Maven
@@ -32,7 +32,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
 
-      # Step 5: Copy the JAR file to the EC2 instance
+      # Step 5: Copy JAR file to the EC2 instance
       - name: Copy JAR file to EC2
         run: |
           # Copy the packaged JAR file to the EC2 instance
