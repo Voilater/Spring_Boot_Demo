@@ -3,8 +3,7 @@ name: Deploy Spring Boot Application to EC2
 on:
   push:
     branches:
-      - main  # Adjust to the branch you want to deploy from (e.g., 'main' or 'master')
-
+      - main  # Adjust to the branch you want to deploy from 
 jobs:
   build:
     runs-on: ubuntu-latest
