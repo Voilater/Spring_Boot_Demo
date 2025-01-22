@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+ 
+  - source: /build/libs/my-spring-app.jar  
+    destination: /home/ubuntu/my-spring-app/  
+
+hooks:
+  
+  BeforeInstall:
+    - location: scripts/stop_spring_app.sh
+      timeout: 300  
+
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+
+  ApplicationStart:
+    - location: scripts/start_spring_app.sh
+      timeout: 300
